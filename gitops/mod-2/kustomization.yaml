@@ -4,4 +4,5 @@ kind: Kustomization
 resources:
   - backstage.yaml
   - cm-app-config.yaml
+  - cm-dyn-plugins.yaml
   - namespace.yaml
