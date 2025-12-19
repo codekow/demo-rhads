@@ -1,11 +1,11 @@
 #!/bin/bash
 
-rhads_get_keycloak_admin(){
+02_get_keycloak_admin(){
   oc -n tssc-keycloak \
     extract secret/keycloak-initial-admin --to -
 }
 
-rhads_patch_argo(){
+02_patch_argo(){
 
 cat > patch.yaml <<YAML
 spec:

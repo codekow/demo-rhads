@@ -2,6 +2,7 @@
 scratch/
 dictionary.dic
 secret*.yaml
+l3-enablement-helpers
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
