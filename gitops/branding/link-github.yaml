@@ -1,0 +1,11 @@
+apiVersion: console.openshift.io/v1
+kind: ConsoleLink
+metadata:
+  name: github-demo
+spec:
+  href: 'https://github.com/codekow/demo-rhads'
+  location: ApplicationMenu
+  text: Demo - Red Hat Advanced Developer Suite (RHADS)
+  applicationMenu:
+    section: Git Repos
+    imageURL: /static/assets/public/imgs/logos/github.svg
