@@ -6,6 +6,7 @@ resources:
   - backstage.yaml
   - cm-app-config.yaml
   - cm-dyn-plugins.yaml
+  - cm-rbac.yaml
   - ns-httpsink.yaml
   - ns-setup-rhdh.yaml
   - pvc.yaml

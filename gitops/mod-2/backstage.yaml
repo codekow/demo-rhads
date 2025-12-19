@@ -24,6 +24,10 @@ spec:
         # Inject the ARGOCD_URL, ARGOCD_USERNAME,
         # and ARGOCD_PASSWORD into the pod as environment variables
         - name: argocd-secrets
+    extraFiles:
+      mountPath: /opt/app-root/src
+      configMaps:
+        - name: rbac-policies
     route:
       enabled: true
   database:
