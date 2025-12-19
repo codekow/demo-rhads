@@ -6,4 +6,5 @@ resources:
   - cm-app-config.yaml
   - cm-dyn-plugins.yaml
   - namespace.yaml
+  - pvc.yaml
   - secret-keycloak.yaml
