@@ -11,6 +11,8 @@ spec:
       # that you created into the Backstage Pods
       configMaps:
         - name: rhdh-config
+    # Add this line to your existing Backstage CR
+    dynamicPluginsConfigMapName: dynamic-plugins-rhdh
     route:
       enabled: true
   database:
