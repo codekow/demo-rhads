@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rhdh-config
+  namespace: setup-rhdh
+data:
+  app-config.yaml: |
+    app:
+      title: Red Hat Developer Hub
+      baseUrl: https://backstage-rhdh-setup-rhdh.apps.cluster-fpfw7.dynamic.redhatworkshops.io
+
+    # Enable guest sign-in without user validation. This configuration
+    # is unsafe - only use it for testing when Developer Hub is not
+    # connected to upstream sources of data!
+    auth:
+      providers:
+        guest:
+          dangerouslyAllowOutsideDevelopment: true
+    backend:
+      baseUrl: https://backstage-rhdh-setup-rhdh.apps.cluster-fpfw7.dynamic.redhatworkshops.io
+      cors:
+        origin: https://backstage-rhdh-setup-rhdh.apps.cluster-fpfw7.dynamic.redhatworkshops.io
