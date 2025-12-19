@@ -52,3 +52,33 @@ data:
                 minutes: 3
               initialDelay:
                 seconds: 15
+        # Our new GitLab provider that will synchronize catalog-info.yaml
+        # from our repositories in GitLab to the Software Catalog
+        gitlab:
+          yourProviderId:
+            host: ${GITLAB_HOST}
+            orgEnabled: true
+            group: rhdh
+            # Normally the entity filename is just set to catalog-info.yaml
+            # In this case we're hardcoding a path to a specific example file
+            entityFilename: discovery-example/catalog-info.yaml
+            schedule:
+              frequency:
+                minutes: 1
+              timeout:
+                minutes: 3
+    integrations:
+      gitlab:
+        - host: ${GITLAB_HOST}
+          baseUrl: https://${GITLAB_HOST}
+          apiBaseUrl: https://${GITLAB_HOST}/api/v4
+          token: ${GITLAB_TOKEN}
+  
+    argocd:
+      appLocatorMethods:
+        - type: config
+          instances:
+            - name: argocd
+              url: ${ARGOCD_URL}
+              username: ${ARGOCD_USERNAME}
+              password: ${ARGOCD_PASSWORD}

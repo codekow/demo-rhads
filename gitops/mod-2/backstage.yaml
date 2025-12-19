@@ -18,6 +18,12 @@ spec:
     extraEnvs:
       secrets:
         - name: keycloak-secrets
+        # Inject the GITLAB_HOST and GITLAB_TOKEN into
+        # the pod as environment variables
+        - name: gitlab-secrets
+        # Inject the ARGOCD_URL, ARGOCD_USERNAME,
+        # and ARGOCD_PASSWORD into the pod as environment variables
+        - name: argocd-secrets
     route:
       enabled: true
   database:

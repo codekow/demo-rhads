@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: httpsink
+  namespace: tssc-gitops
+  labels:
+    app.kubernetes.io/name: httpsink
+    backstage.io/app: httpsink
+spec:
+  project: default
+  source:
+    repoURL: https://gitlab-gitlab.apps.cluster-fpfw7.dynamic.redhatworkshops.io/rhdh/module-2-assets.git
+    targetRevision: HEAD
+    path: argocd-example/k8s
+  destination:
+    name: in-cluster
+    namespace: httpsink
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
