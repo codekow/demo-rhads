@@ -13,6 +13,11 @@ spec:
         - name: rhdh-config
     # Add this line to your existing Backstage CR
     dynamicPluginsConfigMapName: dynamic-plugins-rhdh
+    # This new property will read the listed secret(s) and inject
+    # their key-value pairs as environment variables in the pod
+    extraEnvs:
+      secrets:
+        - name: keycloak-secrets
     route:
       enabled: true
   database:
