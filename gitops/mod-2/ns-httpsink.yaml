@@ -1,0 +1,8 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: httpsink
+  labels:
+    # Provide the tssc-gitops instance with permission to
+    # manage kubernetes resources in this namespace
+    argocd.argoproj.io/managed-by: tssc-gitops

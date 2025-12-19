@@ -1,0 +1,46 @@
+apiVersion: rhdh.redhat.com/v1alpha3
+kind: Backstage
+metadata:
+  name: rhdh
+  namespace: setup-rhdh
+spec:
+  application:
+    appConfig:
+      mountPath: /opt/app-root/src
+      # This instructs the operator to mount the ConfigMap
+      # that you created into the Backstage Pods
+      configMaps:
+        - name: rhdh-config
+    # Add this line to your existing Backstage CR
+    dynamicPluginsConfigMapName: dynamic-plugins-rhdh
+    # This new property will read the listed secret(s) and inject
+    # their key-value pairs as environment variables in the pod
+    extraEnvs:
+      secrets:
+        - name: keycloak-secrets
+        # Inject the GITLAB_HOST and GITLAB_TOKEN into
+        # the pod as environment variables
+        - name: gitlab-secrets
+        # Inject the ARGOCD_URL, ARGOCD_USERNAME,
+        # and ARGOCD_PASSWORD into the pod as environment variables
+        - name: argocd-secrets
+    extraFiles:
+      mountPath: /opt/app-root/src
+      configMaps:
+        - name: rbac-policies
+    route:
+      enabled: true
+  database:
+    enableLocalDb: true
+
+  # Add this deployment patch configuration
+  deployment:
+    patch:
+      spec:
+        template:
+          spec:
+            volumes:
+              - $patch: replace
+                name: dynamic-plugins-root
+                persistentVolumeClaim:
+                  claimName: dynamic-plugins-root
