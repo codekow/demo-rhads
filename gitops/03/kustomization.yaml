@@ -4,3 +4,5 @@ kind: Kustomization
 resources:
   - ns-tpa-helm.yaml
   - ns-tpa-operator.yaml
+  - rhtpa-operator.yaml
+  - tpa-instance.yaml
